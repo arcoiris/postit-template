@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :safe_post, only: [:create, :update]
   
   def index
-    @post = Post.all 
+    @posts = Post.all 
   end
 
   def show
@@ -16,7 +16,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(safe_post)
 
-    if @post.save 
+  if @post.save 
       flash[:notice] = "Your post has been saved!"
       redirect_to post_path(@post)
     else
