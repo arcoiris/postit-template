@@ -28,7 +28,14 @@ class PostsController < ApplicationController
   end
 
   def update
-
+    @post.update(safe_post)
+    
+    if @post.save 
+      flash[:notice] = "Your post has been updated"
+      redirect_to post_path(@post)
+    else
+      render 'edit'
+    end
   end
 
   private
