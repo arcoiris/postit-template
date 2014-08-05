@@ -15,8 +15,9 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(safe_post)
-
-  if @post.save 
+    @post.creator = User.first #hard coded until authentication
+  
+    if @post.save 
       flash[:notice] = "Your post has been saved!"
       redirect_to post_path(@post)
     else
