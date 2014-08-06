@@ -14,7 +14,11 @@
 	<%= @post.description %>
 <p>
 
+<hr/>
+
+Leave a comment:
 <%= form_for [@post, @comment] do |f| %>
 	<%= f.text_area :body %>
+	<br/>
 	<%= f.submit "Post comment", class: 'btn btn-primary' %>
 <% end %>
