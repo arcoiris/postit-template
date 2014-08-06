@@ -16,9 +16,13 @@
 
 <hr/>
 
+<%= render 'shared/errors', object: @comment %> 
 Leave a comment:
 <%= form_for [@post, @comment] do |f| %>
 	<%= f.text_area :body %>
 	<br/>
 	<%= f.submit "Post comment", class: 'btn btn-primary' %>
 <% end %>
+
+<h5>Comments:</h5>
+<%= render @post.comments %>
