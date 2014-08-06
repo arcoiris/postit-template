@@ -7,6 +7,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
   end
 
   def new
@@ -16,7 +17,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(safe_post)
     @post.creator = User.first #hard coded until authentication
-  
+    
     if @post.save 
       flash[:notice] = "Your post has been saved!"
       redirect_to post_path(@post)

@@ -13,3 +13,8 @@
 <p>	
 	<%= @post.description %>
 <p>
+
+<%= form_for [@post, @comment] do |f| %>
+	<%= f.text_area :body %>
+	<%= f.submit "Post comment", class: 'btn btn-primary' %>
+<% end %>
