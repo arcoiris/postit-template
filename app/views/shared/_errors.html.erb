@@ -1,0 +1,10 @@
+<% if object.errors.any? %>
+	<div class="alert alert-error">
+		 The following <%= pluralize(object.errors.count, "errors") %> prevented your content from saving:
+		<ul>
+		<% object.errors.full_messages.each do |msg| %> 
+			<li><%= msg %></li>
+		<% end %>
+		</ul>
+	</div>
+<% end %> 
