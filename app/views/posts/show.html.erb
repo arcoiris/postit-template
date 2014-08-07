@@ -19,8 +19,9 @@
 <%= render 'shared/errors', object: @comment %> 
 Leave a comment:
 <%= form_for [@post, @comment] do |f| %>
-	<%= f.text_area :body %>
-	<br/>
+	<div class='control-group'>
+		<%= f.text_area :body, rows: 3, class: 'span4' %>
+	</div>	
 	<%= f.submit "Post comment", class: 'btn btn-primary' %>
 <% end %>
 
