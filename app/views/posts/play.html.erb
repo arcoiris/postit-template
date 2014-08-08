@@ -1,0 +1,9 @@
+<%= form_tag(controller: posts, action: play, method: 'get' do %>
+	<div class="control-group">
+	<%= time_zone_select(:person, :time_zone) %>
+	</div>
+	<div class="control-group">
+	<%= select_date Date.today, prefix: :start_date %>
+	</div>
+	<%= submit_tag %>
+<% end %>

@@ -42,7 +42,7 @@ class PostsController < ApplicationController
 
   private
     def safe_post
-      params.require(:post).permit!
+      params.require(:post).permit(:title, :url, :description, {:category_ids => []}, :user)
     end
 
     def set_post
