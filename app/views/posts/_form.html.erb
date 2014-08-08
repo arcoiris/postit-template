@@ -15,7 +15,8 @@
 			<%= f.text_area :description, rows: 5 %>
 		</div>
 		<div class="control-group">
-			<%= f.collection_check_boxes :category_ids, Category.all, :id, :name, html_options: { class: 'checkbox inline' } %>
+			<%= f.label "Categories" %>
+			<%= f.collection_check_boxes(:category_ids, Category.all, :id, :name) %>
 		</div>
 		<%= f.submit class: "btn btn-primary" %>
 	<% end %> 

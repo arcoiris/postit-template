@@ -5,5 +5,6 @@ class Category < ActiveRecord::Base
 	validates :name, 
 		presence: true, 
 		length: { minimum: 4 },
-		numercality: false
+		numercality: false, 
+		uniqueness: true
 end
