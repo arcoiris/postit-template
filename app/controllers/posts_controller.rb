@@ -16,10 +16,9 @@ class PostsController < ApplicationController
   end
 
   def create
-    binding.pry
     @post = Post.new(safe_post)
-    @post.creator = User.first #hard coded until authentication
-    
+    @post.creator = current_user
+
     if @post.save 
       flash[:notice] = "Your post has been saved!"
       redirect_to post_path(@post)
@@ -44,7 +43,7 @@ class PostsController < ApplicationController
 
   private
     def safe_post
-      params.require(:post).permit(:title, :url, :description, :user, category_ids: [])
+      params.require(:post).permit(:title, :url, :description, category_ids: [])
     end
 
     def set_post
