@@ -1,7 +1,8 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update]
   before_action :safe_post, only: [:create, :update]
-  
+  before_action :logged_in?, only: [:new, :create, :edit, :update]
+
   def index
     @posts = Post.all 
   end
