@@ -1,6 +1,6 @@
 class UsersController < ApplicationController 
-	before_action :set_user, only: [:edit, :show]
-	
+	before_action :set_user, only: [:edit, :update, :show]
+	before_action :require_user, only: [:edit, :update]
 	def new
 		@user = User.new
 	end
@@ -9,7 +9,8 @@ class UsersController < ApplicationController
 		@user = User.new(safe_user)
 
 		if @user.save 
-			flash[:notice] = "You now have an account"
+			session[:user_id] = @user.id
+			flash[:notice] = "You are signed up and logged in!"
 			redirect_to root_path
 		else
 			render 'new'
@@ -17,11 +18,12 @@ class UsersController < ApplicationController
 	end
 
 	def edit
-		
 	end
 
 	def update
-		if @user.update
+		@user.update(safe_user)
+
+		if @user.save 
 			flash[:notice] = "User successfully updated!"
 			redirect_to root_path #to be changed to show path
 		else
