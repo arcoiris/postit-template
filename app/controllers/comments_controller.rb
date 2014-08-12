@@ -1,10 +1,10 @@
 class CommentsController < ApplicationController 
-	before_action :logged_in?, only: [:create]
+	before_action :require_user, only: [:create]
 
 	def create
 		@post = Post.find(params[:post_id])
-		@comment = @post.comments.build(params.require(:comment).permit(:body).merge(user_id: 1))
-		# to do: remove hardcoded user id
+		@post.user = current_user
+		@comment = @post.comments.build(params.require(:comment).permit(:body))
 
 		if @comment.save 
 			flash[:notice] = "Your comment has been posted!"

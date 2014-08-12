@@ -3,11 +3,6 @@ class SessionsController < ApplicationController
  end
 
  def create
-	# user.authenticate('password')
-	# 1. get user obj
-	# 2. see if the pw matches
-	# 3. if so, log in
-	# 4. if not, error message
 	user = User.find_by_username(params[:username])
 
  	if user && user.authenticate(params[:password])
