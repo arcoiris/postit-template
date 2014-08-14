@@ -3,8 +3,8 @@ class CommentsController < ApplicationController
 
 	def create
 		@post = Post.find(params[:post_id])
-		@post.user = current_user
 		@comment = @post.comments.build(params.require(:comment).permit(:body))
+		@comment.user = current_user
 
 		if @comment.save 
 			flash[:notice] = "Your comment has been posted!"

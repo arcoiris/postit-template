@@ -1,6 +1,7 @@
 class UsersController < ApplicationController 
 	before_action :set_user, only: [:edit, :update, :show]
-	before_action :require_user, only: [:edit, :update]
+	before_action :authorize_user, only: [:edit, :update]
+
 	def new
 		@user = User.new
 	end
@@ -42,5 +43,12 @@ class UsersController < ApplicationController
 
 	def set_user
 		@user = User.find(params[:id])
+	end
+
+	def authorize_user
+		if current_user != @user
+			flash[:error] = "You are not authorized to perform this action."
+			redirect_to root_path
+		end
 	end
 end
