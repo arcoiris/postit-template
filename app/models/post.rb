@@ -2,6 +2,7 @@ class Post < ActiveRecord::Base
 	has_many :post_categories 
 	has_many :categories, through: :post_categories
 	has_many :comments
+	has_many :votes, as: :voteable
 	belongs_to :creator, foreign_key: 'user_id', class_name: 'User'
 
 	validates :title, presence: :true, length: { minimum: 5 }
