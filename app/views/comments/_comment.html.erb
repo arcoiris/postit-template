@@ -1,11 +1,22 @@
 <% show_post ||= false %>
 <div class="row">
+	<div class="span0 well text-center">
+		<%= link_to vote_post_comment_path(comment.post_id, comment, vote: true), method: :post do %>
+			<i class="icon-arrow-up"></i>
+		<% end %>
+		<br />
+			<%= comment.total_votes %> votes
+		<br />
+		<%= link_to vote_post_comment_path(comment.post_id, comment, vote: false), method: :post do %>
+			<i class="icon-arrow-down"></i>
+		<% end %>
+	</div>
 	<div class="well span8">
 		<%= comment.body %>
 		<% if show_post %>
-			<i>on</i> <%= link_to Post.find(comment.post_id).title, post_path(comment.post_id) %>
+       <i>on</i> <%= link_to Post.find(comment.post_id).title, post_path(comment.post) %>
 		<% end %>
 		<br/>
-		by <%= link_to("#{comment.user.username}", user_path(comment.user))%> at <%= comment.created_at %>
+		by <%= link_to("#{comment.user.username}", user_path(comment.user)) %>
 	</div>
 </div>
