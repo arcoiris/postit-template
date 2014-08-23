@@ -47,7 +47,7 @@ class PostsController < ApplicationController
         format.html { redirect_to :back }
         format.js
       else
-        format.html { redirect_to :back }
+        format.html { redirect_to :back, alert: "You can only vote on this once" }
         format.js
 
       end
