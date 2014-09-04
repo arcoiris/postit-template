@@ -1,4 +1,5 @@
 class Category < ActiveRecord::Base
+	include Sluggable
 	has_many :post_categories
 	has_many :posts, through: :post_categories
 
@@ -7,13 +8,6 @@ class Category < ActiveRecord::Base
 		length: { minimum: 4 },
 		numercality: false, 
 		uniqueness: true
-
-	before_save :generate_slug
-	def to_param
-		self.slug
-	end
-
-	def	generate_slug
-		self.slug = self.name.gsub(/\s/, '-').downcase
-	end
+	
+	sluggable_column :name
 end
