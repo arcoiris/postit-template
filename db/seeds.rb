@@ -14,6 +14,7 @@ Category.create(name: "Humor")
 
 User.create(username: "bob", password: "password", password_confirmation: "password")
 User.create(username: "hank", password: "password", password_confirmation: "password")
+User.create(username: "tester", password: "tester", password_confirmation: "tester")
 
 Post.create(title: "Reddit Is Awesome!", url: "reddit.com", description: "Le Reddit, the moral backbone of a planet.", user_id: 1)
 Post.create(title: "A Great Programmer News Site", url: "hackernews.com", description: "Yeah, this is a really good news site!", user_id: 2)
@@ -24,3 +25,4 @@ PostCategory.create(post_id: 1, category_id: 4)
 PostCategory.create(post_id: 2, category_id: 1)
 PostCategory.create(post_id: 2, category_id: 2)
 PostCategory.create(post_id: 3, category_id: 3)
+
