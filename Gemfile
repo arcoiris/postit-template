@@ -5,7 +5,6 @@ gem 'sass-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'bootstrap-sass', '~> 2.3.2.0'
-gem 'voteable_deb', path: '/home/deborah/code/tutorials/voteable-gem'
 
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
@@ -24,9 +23,11 @@ group :development do
   gem 'quiet_assets'
   gem 'pry'
   gem 'sqlite3'
+  gem 'voteable_deb', path: '/home/deborah/code/tutorials/voteable-gem'
 end
 
 group :production do
   gem 'pg'
   gem 'rails_12factor'
+  gem 'voteable_deb'
 end
