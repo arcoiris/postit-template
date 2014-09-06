@@ -22,9 +22,7 @@ class UsersController < ApplicationController
 	end
 
 	def update
-		@user.update(safe_user)
-
-		if @user.save 
+		if @user.update(safe_user) 
 			flash[:notice] = "User successfully updated!"
 			redirect_to root_path #to be changed to show path
 		else
@@ -38,7 +36,7 @@ class UsersController < ApplicationController
 	private
 
 	def safe_user
-		params.require(:user).permit(:username, :password)
+		params.require(:user).permit(:username, :password, :time_zone)
 	end
 
 	def set_user
